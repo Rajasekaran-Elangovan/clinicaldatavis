@@ -79,4 +79,4 @@ Contributions are welcome! To contribute, please follow these steps:
 This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
 ## Repository
-The project repository can be found at https://github.com/Rajasekaran-Elangovan/clinicaldatavis. @ @ #
+The project repository can be found at https://github.com/Rajasekaran-Elangovan/clinicaldatavis
