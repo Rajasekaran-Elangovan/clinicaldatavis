@@ -1,4 +1,4 @@
-# Clinical Data Visualization - Do It Yourself project
+# Clinical Data Visualization - DIY project
 
 ## Project Overview
 
