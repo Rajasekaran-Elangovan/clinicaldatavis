@@ -1,6 +1,4 @@
 ###################################################
-#   Session date : 29Nov2025
-#   Batch : Sep2025
 #  content : ggplot2 for graphs (boxplot)
 ###################################################
 # data preparation
