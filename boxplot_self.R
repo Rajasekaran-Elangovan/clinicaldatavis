@@ -2,8 +2,17 @@
 #  content : ggplot2 for graphs (boxplot)
 ###################################################
 # data preparation
-library(plotly)
+pkgs <- c("safetyData", "stringr", "dplyr","plotly")
 
+for (p in pkgs) {
+  if (!requireNamespace(p, quietly = TRUE)) {
+    install.packages(p)
+  }
+  library(p, character.only = TRUE)
+}
+
+remove(pkgs)
+# function
 boxplot_self <- function(inds,prm,x_label = "Analysis Visit", y_label = "Laboratory values",interact = FALSE,strat=TRUE) {
   # browser() ## to debug a function
   # data selection
