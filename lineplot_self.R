@@ -1,8 +1,19 @@
 ###################################################
 #  content : ggplot2 for graphs (lineplot)
 ###################################################
+# load libraries
+pkgs <- c("safetyData", "stringr", "dplyr","plotly")
 
-lineplot_self <- function(inds,plotvar = AVAL,prmn=1,x_label = "Analysis Visit",y_label = "Analysis Value",interact = FALSE,strat = TRUE) {
+for (p in pkgs) {
+  if (!requireNamespace(p, quietly = TRUE)) {
+    install.packages(p)
+  }
+  library(p, character.only = TRUE)
+}
+
+remove(pkgs)
+
+lineplot_self <- function(inds,plotvar = AVAL,prmn,x_label = "Analysis Visit",y_label = "Analysis Value",interact = FALSE,strat = TRUE) {
   
   datafig <- {{inds}} %>% 
     mutate(
@@ -19,10 +30,9 @@ vis <- c("Baseline", "Week 2", "Week 4","Week 6","Week 8","Week 12", "Week 16","
 datafig$AVISIT <- factor(datafig$AVISIT,levels = vis)
 
 param <- sort(unique(datafig$PARAM))
-prm <- param[prmn]
 
 figdf <- datafig %>% 
-  dplyr::filter(PARAM==prm & !is.na({{plotvar}}))
+  dplyr::filter(PARAM==prmn & !is.na({{plotvar}}))
 
 lineplot <- figdf %>% # data layer
   ggplot(aes(AVISIT,{{plotvar}}, group = USUBJID, colour = USUBJID)) + # aesthetic mapping
@@ -30,7 +40,7 @@ lineplot <- figdf %>% # data layer
   geom_point() + # geometry layer
   labs(x = x_label,
        y = y_label,
-       title = paste("Parameter:",prm)
+       title = paste("Parameter:",prmn)
   ) + # labels within coordinates
   theme_classic() +
   theme(legend.position = "none",
